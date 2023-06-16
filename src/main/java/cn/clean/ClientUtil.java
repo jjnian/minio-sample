@@ -12,7 +12,7 @@ public class ClientUtil {
 		MinioClient minioClient =
 				MinioClient.builder()
 						.endpoint("http://192.168.64.50:9003")
-						.credentials("root", "cvicse@2022")
+						.credentials("root", "root")
 						.build();
 		return minioClient;
 	}

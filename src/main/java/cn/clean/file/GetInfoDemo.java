@@ -15,16 +15,21 @@ import java.security.NoSuchAlgorithmException;
  * @Date 2023/6/15
  */
 public class GetInfoDemo {
+
 	/**
-	 *  1.路径前面不能带桶
-	 *  2.路径开始带不带 “/”都可，但是路径结尾不能带 “/”，而且路径必须对应文件
-	 *
+	 *  测试获取minio文件的大小
+	 *  路径必须对应文件，如果路径对应的文件夹将会报错
 	 */
 	private static String path = "ml/dataset/dataset-1669258216733958145/dataset/mnist";
 	public static void main(String[] args) throws Exception{
 		getPath();
 	}
 
+	/**
+	 *  1.路径前面不能带桶
+	 *  2.路径开始带不带 “/”都可，但是路径结尾不能带 “/”，而且路径必须对应文件
+	 *
+	 */
 	public static void getPath() throws Exception{
 		MinioClient client = ClientUtil.getClient();
 		StatObjectResponse stat =

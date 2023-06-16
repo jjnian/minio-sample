@@ -14,9 +14,8 @@ import io.minio.messages.Tags;
  */
 public class GetObjectTagDemo {
 	/**
-	 *  1.路径前面带桶报错
-	 *  2.路径开始可以不带 “/”
-	 *  3.路径必须对应文件
+	 *
+	 * 测试路径的Tag
 	 */
 	private static String path = "ml/dataset/dataset-1669258216733958145/dataset/mnist/train_14.png";
 
@@ -24,6 +23,11 @@ public class GetObjectTagDemo {
 		getObejctTag();
 	}
 
+	/**
+	 *  1.路径前面带桶报错
+	 *  2.路径开始可以不带 “/”
+	 *  3.路径必须对应文件
+	 */
 	public static void getObejctTag() throws Exception{
 		MinioClient client = ClientUtil.getClient();
 		Tags tags =
