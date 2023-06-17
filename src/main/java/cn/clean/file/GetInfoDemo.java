@@ -20,7 +20,7 @@ public class GetInfoDemo {
 	 *  测试获取minio文件的大小
 	 *  路径必须对应文件，如果路径对应的文件夹将会报错
 	 */
-	private static String path = "ml/dataset/dataset-1669258216733958145/dataset/mnist";
+	private static String path = "/ml/dataset/dataset-1669307399327248387/dataset/mnist/train_0.png";
 	public static void main(String[] args) throws Exception{
 		getPath();
 	}
@@ -39,5 +39,7 @@ public class GetInfoDemo {
 								.object(path)
 								.build());
 		System.out.println(stat.size());
+		System.out.println(stat.contentType());
+		System.out.println(stat.etag());
 	}
 }

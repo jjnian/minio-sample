@@ -14,14 +14,14 @@ public class GetSubFileDemo {
 	 *
 	 *  测试获取某个路径下的所有文件
 	 */
-	private static String path = "/ml/dataset/dataset-1669258216733958145/dataset/";
+	private static String path = "/ml/dataset/dataset-1668788925135974401/label";
 
 	public static void main(String[] args) throws Exception{
 		getSubFile();
 	}
 
 	/**
-	 *  1.路径前面带桶不报错，只是不到该路径下的路径
+	 *  1.路径前面带桶不报错，只是不到该路径下的文件
 	 *  2.路径开始和结尾带不带 “/”都可以
 	 *  3.递归获取只能获取到文件
 	 */
@@ -38,6 +38,7 @@ public class GetSubFileDemo {
 
 		for (Result<Item> result : results) {
 			Item item = result.get();
+			System.out.println(item.objectName());
 			System.out.println(item.lastModified() + "\t" + item.size() + "\t" + item.objectName());
 		}
 	}
