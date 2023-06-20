@@ -4,6 +4,9 @@ import cn.clean.ClientUtil;
 import io.minio.*;
 import io.minio.messages.Item;
 
+import java.util.LinkedList;
+import java.util.List;
+
 /**
  * @Author ji_ruixin
  * @Date 2023/6/15
@@ -14,7 +17,7 @@ public class GetSubFileDemo {
 	 *
 	 *  测试获取某个路径下的所有文件
 	 */
-	private static String path = "/ml/dataset/dataset-1668788925135974401/label";
+	private static String path = "/ml/dataset/dataset-1670714178216923138/";
 
 	public static void main(String[] args) throws Exception{
 		getSubFile();
@@ -25,7 +28,8 @@ public class GetSubFileDemo {
 	 *  2.路径开始和结尾带不带 “/”都可以
 	 *  3.递归获取只能获取到文件
 	 */
-	public static void getSubFile() throws Exception{
+	public static List<String> getSubFile() throws Exception{
+		List<String> strings = new LinkedList<>();
 		MinioClient client = ClientUtil.getClient();
 		Iterable<Result<Item>> results =
 				client.listObjects(
@@ -38,8 +42,11 @@ public class GetSubFileDemo {
 
 		for (Result<Item> result : results) {
 			Item item = result.get();
-			System.out.println(item.objectName());
-			System.out.println(item.lastModified() + "\t" + item.size() + "\t" + item.objectName());
+			strings.add(item.objectName());
+			// System.out.println(item.objectName());
+			// System.out.println(item.lastModified() + "\t" + item.size() + "\t" + item.objectName());
 		}
+		return strings;
+
 	}
 }
